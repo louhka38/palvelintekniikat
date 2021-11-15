@@ -14,6 +14,7 @@ class Server {
 
     public routes(): void {
         // this.app.use('/')
+        this.app.use('/favicon.ico', (req, res) => res.status(204))
     }
 
     public config(): void {

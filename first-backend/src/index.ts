@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
+import 'dotenv/config'
 
 import { CourseRoutes } from './routes/courseRoutes'
 
@@ -20,7 +21,7 @@ class Server {
     }
 
     public config(): void {
-        this.app.set('PORT', process.env.PORT || 3000)
+        this.app.set('PORT', process.env.PORT1 || 4000)
         this.app.use(express.json())
         this.app.use(express.urlencoded({extended: true}))
         this.app.use(morgan('tiny'))

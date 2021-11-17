@@ -2,6 +2,8 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 
+import { CourseRoutes } from './routes/courseRoutes'
+
 class Server {
     public app: express.Application
 
@@ -13,7 +15,7 @@ class Server {
     }
 
     public routes(): void {
-        // this.app.use('/')
+        this.app.use('/', new CourseRoutes().router)
     }
 
     public config(): void {

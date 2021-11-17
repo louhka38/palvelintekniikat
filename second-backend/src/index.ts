@@ -19,14 +19,13 @@ class Server {
     }
 
     public config(): void {
-        const allowedOrigins = ['http://localhost:3000']
-        const options: cors.CorsOptions = { origin: allowedOrigins}
+        const corsOptions = { origin: 'http://localhost:3000' }
 
         this.app.set('PORT', process.env.PORT || 3001)
         this.app.use(express.json())
         this.app.use(express.urlencoded({extended: true}))
         this.app.use(morgan('tiny'))
-        this.app.use(cors(options))
+        this.app.use(cors(corsOptions))
     }
 
     private database() {}

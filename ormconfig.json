@@ -1,0 +1,6 @@
+{
+    "type": "sqlite",
+    "database": "database/typeorm-relations.db",
+    "entities": ["second-backend/src/entities/*.entity{.ts,.js}"],
+    "synchronize": true
+}

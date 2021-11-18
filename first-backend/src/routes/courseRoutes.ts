@@ -11,6 +11,7 @@ export class CourseRoutes {
     }
 
     routes() {
+        this.router.get("/", this.courseController.getCourses)
         this.router.post("/", this.courseController.addCourse);
     }
 }

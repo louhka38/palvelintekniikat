@@ -4,6 +4,8 @@ import cors from 'cors'
 import 'dotenv/config'
 
 import { CourseRoutes } from './routes/courseRoutes'
+import { createConnection, Repository } from 'typeorm'
+import { Course } from './entities/course.entity'
 
 class Server {
     public app: express.Application
@@ -38,5 +40,8 @@ class Server {
     }
 }
 
-const server = new Server()
-server.start()
+createConnection().then(async connection => {
+    const courseRepository: Repository<Course> = connection.getRepository(Course)
+    const server = new Server()
+    server.start()
+}).catch(error => console.log("TypeORM connection error: ", error))

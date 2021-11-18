@@ -1,12 +1,12 @@
-import { Request, Response } from "express";
-import { ICourse } from "../models/course";
+import { Request, Response } from "express"
 import fetch from 'cross-fetch'
+import { Course } from "../entities/course.entity"
 
 export class CourseController {
 
     public async addCourse(req: Request, res: Response): Promise<any> {
-        const newCourse: ICourse = req.body;
-        console.log(newCourse);
+        const newCourse: Course = req.body
+        console.log(newCourse)
         
         const response = await fetch('http://localhost:3001', {
             method: 'POST',
@@ -15,11 +15,17 @@ export class CourseController {
             },
             body: JSON.stringify(req.body)
         });
-        if(typeof(response) !== typeof(newCourse)) {
-            res.sendStatus(404);
-        } else {
-            res.json(response);
-        }
-        return response.json();
+        const body = await response.json()
+        res.json(body)
+        return body
+    }
+
+    public async getCourses(req: Request, res: Response): Promise<Course []> {
+        const response = await fetch('http://localhost:3001', {
+            method: 'GET'
+        })
+        const body = await response.json()
+        res.json(body)
+        return body
     }
 }

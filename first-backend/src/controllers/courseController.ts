@@ -4,8 +4,7 @@ import { Course } from "../entities/course.entity"
 
 export class CourseController {
 
-    public async addCourse(req: Request, res: Response): Promise<any> {
-        const newCourse: Course = req.body
+    public async addCourse(req: Request, res: Response): Promise<Course> {
         
         const response = await fetch(process.env.SERVER!, {
             method: 'POST',

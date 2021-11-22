@@ -22,7 +22,7 @@ class Server {
     }
 
     public config(): void {
-        const corsOptions = { origin: 'http://localhost:3000' }
+        const corsOptions = { origin: process.env.ORIGIN }
 
         this.app.set('PORT', process.env.PORT2 || 4001)
         this.app.use(express.json())

@@ -6,9 +6,8 @@ export class CourseController {
 
     public async addCourse(req: Request, res: Response): Promise<any> {
         const newCourse: Course = req.body
-        console.log(newCourse)
         
-        const response = await fetch('http://localhost:3001', {
+        const response = await fetch(process.env.SERVER!, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -21,7 +20,7 @@ export class CourseController {
     }
 
     public async getCourses(req: Request, res: Response): Promise<Course []> {
-        const response = await fetch('http://localhost:3001', {
+        const response = await fetch(process.env.SERVER!, {
             method: 'GET'
         })
         const body = await response.json()
